@@ -1,0 +1,41 @@
+<div class="content-wrapper">
+  <nb-card accent="danger" id="accept-card">
+    <nb-card-header>Orders te Accepteren</nb-card-header>
+    <nb-card-body>
+      <nb-list>
+        <nb-list-item *ngFor="let fruit of fruits">
+          <span style="font-weight: bolder;">{{ fruit.name }}</span>
+          <span *ngIf="large">{{ fruit.city }}</span>
+          <span>{{ fruit.date }}</span>
+          <span *ngIf="large">€{{ fruit.price }}</span>
+        </nb-list-item>
+      </nb-list>
+    </nb-card-body>
+  </nb-card>
+  <nb-card accent="info" id="prepare-card">
+    <nb-card-header>Orders te bereiden</nb-card-header>
+    <nb-card-body>
+      <nb-list>
+        <nb-list-item *ngFor="let fruit of fruits">
+          <span style="font-weight: bolder;">{{ fruit.name }}</span>
+          <span *ngIf="large">{{ fruit.city }}</span>
+          <span>{{ fruit.date }}</span>
+          <span *ngIf="large">€{{ fruit.price }}</span>
+        </nb-list-item>
+      </nb-list>
+    </nb-card-body>
+  </nb-card>
+  <nb-card accent="info" id="send-card">
+    <nb-card-header>Orders te verzenden</nb-card-header>
+    <nb-card-body>
+      <nb-list>
+        <nb-list-item *ngFor="let fruit of fruits">
+          <span style="font-weight: bolder;">{{ fruit.name }}</span>
+          <span *ngIf="large">{{ fruit.city }}</span>
+          <span>{{ fruit.date }}</span>
+          <span *ngIf="large">€{{ fruit.price }}</span>
+        </nb-list-item>
+      </nb-list>
+    </nb-card-body>
+  </nb-card>
+</div>

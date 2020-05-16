@@ -1,0 +1,37 @@
+@import "../../var";
+
+.content-wrapper {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-column-gap: 100px;
+
+  grid-template-areas: "Accept Accept" "Prepare Prepare" "Send Send";
+
+  @include lg {
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+      "Accept Prepare"
+      "Send Send ";
+  }
+}
+
+nb-list-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+#accept-card {
+  grid-area: Accept;
+}
+
+#prepare-card {
+  grid-area: Prepare;
+}
+
+#send-card {
+  grid-area: Send;
+}
+
+nb-card {
+  max-height: 35vh;
+}
