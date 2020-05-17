@@ -2,22 +2,18 @@
 
 .content-wrapper {
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
   grid-column-gap: 100px;
 
-  grid-template-areas: "Accept Accept" "Prepare Prepare" "Send Send";
+  grid-template-areas: "Accept Accept" "Prepare Prepare" "Send Send" "Sent Sent";
 
   @include lg {
     grid-template-rows: 1fr 1fr;
     grid-template-areas:
       "Accept Prepare"
-      "Send Send ";
+      "Send Send "
+      "Sent Sent ";
   }
-}
-
-nb-list-item {
-  display: flex;
-  justify-content: space-between;
 }
 
 #accept-card {
@@ -32,6 +28,15 @@ nb-list-item {
   grid-area: Send;
 }
 
-nb-card {
-  max-height: 35vh;
+#sent-card {
+  grid-area: Sent;
 }
+
+.order-wrapper{
+  text-align: center;
+  padding-bottom: 35px;
+  input {
+    margin-right: 25px;
+  }
+}
+

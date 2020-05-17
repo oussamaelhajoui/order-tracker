@@ -1,0 +1,18 @@
+<nb-card accent="{{accent}}" id="accept-card">
+  <nb-card-header class="flex">
+    <p>{{cardTitle}}: <strong>({{listData.length}})</strong></p>
+
+    <button [routerLink]="[link]" nbButton shape="round" size="small" status="{{accent}}">Details</button>
+  </nb-card-header>
+  <nb-card-body>
+    <nb-list>
+      <nb-list-item *ngFor="let data of listData">
+        <span style="font-weight: bolder;">{{ data.name }}</span>
+        <span *ngIf="large">{{ data.city }}</span>
+        <span>{{ data.orderDate }}</span>
+        <span *ngIf="large">€{{ data.price }}</span>
+        <span *ngIf="showButton"><button  nbButton status="primary" size="small">overseinen<nb-icon icon="arrow-ios-forward-outline"></nb-icon></button></span>
+      </nb-list-item>
+    </nb-list>
+  </nb-card-body>
+</nb-card>

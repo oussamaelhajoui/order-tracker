@@ -1,5 +1,7 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import {Component, OnInit, HostListener, TemplateRef, ViewChild} from '@angular/core';
+import { NbWindowService } from '@nebular/theme';
 import * as moment from 'moment';
+import {InsertOrderComponent} from '../../components/insert-order/insert-order.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,7 +16,7 @@ export class DashboardComponent implements OnInit {
       amount: '1',
       price: '599',
       city: 'Amsterdam',
-      date: moment(new Date('05/04/2020 18:13:43')).fromNow(),
+      orderDate: moment(new Date('05/04/2020 18:13:43')).fromNow(),
     },
     {
       name: 'Erick Manders',
@@ -22,7 +24,7 @@ export class DashboardComponent implements OnInit {
       amount: '1',
       price: '599',
       city: 'Amsterdam',
-      date: moment(new Date('05/07/2020 11:16:50')).fromNow(),
+      orderDate: moment(new Date('05/07/2020 11:16:50')).fromNow(),
     },
     {
       name: 'Drik Makers',
@@ -30,7 +32,7 @@ export class DashboardComponent implements OnInit {
       amount: '1',
       price: '599',
       city: 'Amsterdam',
-      date: moment(new Date('05/11/2020 11:36:49')).fromNow(),
+      orderDate: moment(new Date('05/11/2020 11:36:49')).fromNow(),
     },
     {
       name: 'Maikel steef',
@@ -38,7 +40,7 @@ export class DashboardComponent implements OnInit {
       amount: '1',
       price: '599',
       city: 'Amsterdam',
-      date: moment(new Date('05/13/2020 05:47:24')).fromNow(),
+      orderDate: moment(new Date('05/13/2020 05:47:24')).fromNow(),
     },
     {
       name: 'Elena story',
@@ -46,7 +48,7 @@ export class DashboardComponent implements OnInit {
       amount: '1',
       price: '599',
       city: 'Amsterdam',
-      date: moment(new Date('05-16-2020 00:26:19')).fromNow(),
+      orderDate: moment(new Date('05-16-2020 00:26:19')).fromNow(),
     },
     {
       name: 'Elena story',
@@ -54,7 +56,7 @@ export class DashboardComponent implements OnInit {
       amount: '1',
       price: '599',
       city: 'Amsterdam',
-      date: moment(new Date('05-16-2020 00:26:19')).fromNow(),
+      orderDate: moment(new Date('05-16-2020 00:26:19')).fromNow(),
     },
     {
       name: 'Elena story',
@@ -62,7 +64,7 @@ export class DashboardComponent implements OnInit {
       amount: '1',
       price: '599',
       city: 'Amsterdam',
-      date: moment(new Date('05-16-2020 00:26:19')).fromNow(),
+      orderDate: moment(new Date('05-16-2020 00:26:19')).fromNow(),
     },
     {
       name: 'Elena story',
@@ -70,7 +72,7 @@ export class DashboardComponent implements OnInit {
       amount: '1',
       price: '599',
       city: 'Amsterdam',
-      date: moment(new Date('05-16-2020 00:26:19')).fromNow(),
+      orderDate: moment(new Date('05-16-2020 00:26:19')).fromNow(),
     },
     {
       name: 'Elena story',
@@ -78,7 +80,7 @@ export class DashboardComponent implements OnInit {
       amount: '1',
       price: '599',
       city: 'Amsterdam',
-      date: moment(new Date('05-16-2020 00:26:19')).fromNow(),
+      orderDate: moment(new Date('05-16-2020 00:26:19')).fromNow(),
     },
     {
       name: 'Elena story',
@@ -86,7 +88,7 @@ export class DashboardComponent implements OnInit {
       amount: '1',
       price: '599',
       city: 'Amsterdam',
-      date: moment(new Date('05-16-2020 00:26:19')).fromNow(),
+      orderDate: moment(new Date('05-16-2020 00:26:19')).fromNow(),
     },
     {
       name: 'Elena story',
@@ -94,7 +96,7 @@ export class DashboardComponent implements OnInit {
       amount: '1',
       price: '599',
       city: 'Amsterdam',
-      date: moment(new Date('05-16-2020 00:26:19')).fromNow(),
+      orderDate: moment(new Date('05-16-2020 00:26:19')).fromNow(),
     },
     {
       name: 'Elena story',
@@ -102,7 +104,7 @@ export class DashboardComponent implements OnInit {
       amount: '1',
       price: '599',
       city: 'Amsterdam',
-      date: moment(new Date('05-16-2020 00:26:19')).fromNow(),
+      orderDate: moment(new Date('05-16-2020 00:26:19')).fromNow(),
     },
     {
       name: 'Elena story',
@@ -110,7 +112,7 @@ export class DashboardComponent implements OnInit {
       amount: '1',
       price: '599',
       city: 'Amsterdam',
-      date: moment(new Date('05-16-2020 00:26:19')).fromNow(),
+      orderDate: moment(new Date('05-16-2020 00:26:19')).fromNow(),
     },
     {
       name: 'Elena story',
@@ -118,13 +120,13 @@ export class DashboardComponent implements OnInit {
       amount: '1',
       price: '599',
       city: 'Amsterdam',
-      date: moment(new Date('05-16-2020 00:26:19')).fromNow(),
+      orderDate: moment(new Date('05-16-2020 00:26:19')).fromNow(),
     },
   ];
-
+  @ViewChild('contentTemplate', {static: false}) contentTemplate: TemplateRef<any>;
   large = false;
 
-  constructor() {}
+  constructor(private windowService: NbWindowService) {}
 
   ngOnInit(): void {
     if (window.screen.width > 992) {
@@ -132,6 +134,15 @@ export class DashboardComponent implements OnInit {
     } else {
       this.large = false;
     }
+    this.openWindow();
+  }
+
+
+  openWindow() {
+    this.windowService.open(
+      InsertOrderComponent,
+      {title: 'Voeg order in'}
+    );
   }
 
   @HostListener('window:resize', ['$event'])

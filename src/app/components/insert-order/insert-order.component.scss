@@ -1,0 +1,46 @@
+h3{
+  text-align: center;
+}
+.content-wrapper {
+  form{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: .25fr .25fr .25fr .25fr;
+    grid-gap: 25px;
+    grid-template-areas:
+      "klant klant klant"
+      "product aantal totaal"
+      "straat straat postcode"
+      "stad  land land"
+      "submit submit submit";
+  }
+}
+
+#klant{
+  grid-area: klant;
+}
+#product{
+  grid-area: product;
+}
+#aantal{
+  grid-area: aantal;
+}
+#totaal{
+  grid-area: totaal;
+}
+#straat{
+  grid-area: straat;
+}
+#postcode{
+  grid-area: postcode;
+}
+#stad{
+  grid-area: stad;
+}
+#land{
+  grid-area: land;
+}
+#submit{
+  grid-area: submit;
+  color: #222222;
+}
