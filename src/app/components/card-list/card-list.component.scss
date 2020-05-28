@@ -1,4 +1,4 @@
-.flex{
+.flex {
   display: flex;
   justify-content: space-between;
 }
@@ -10,8 +10,12 @@ nb-card {
 nb-list-item {
   display: flex;
   justify-content: space-between;
+  // span {
+  //   min-width: 100px;
+  //   max-width: 100px;
+  // }
 }
 
-nb-list > nb-list-item:nth-child(1){
+nb-list > nb-list-item:nth-child(1) {
   border-top: 0px;
 }

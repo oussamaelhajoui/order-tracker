@@ -1,7 +1,13 @@
-import {Component, OnInit, HostListener, TemplateRef, ViewChild} from '@angular/core';
+import {
+  Component,
+  OnInit,
+  HostListener,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
 import { NbWindowService } from '@nebular/theme';
 import * as moment from 'moment';
-import {InsertOrderComponent} from '../../components/insert-order/insert-order.component';
+import { InsertOrderComponent } from '../../components/insert-order/insert-order.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -123,7 +129,9 @@ export class DashboardComponent implements OnInit {
       orderDate: moment(new Date('05-16-2020 00:26:19')).fromNow(),
     },
   ];
-  @ViewChild('contentTemplate', {static: false}) contentTemplate: TemplateRef<any>;
+  @ViewChild('contentTemplate', { static: false }) contentTemplate: TemplateRef<
+    any
+  >;
   large = false;
 
   constructor(private windowService: NbWindowService) {}
@@ -134,15 +142,11 @@ export class DashboardComponent implements OnInit {
     } else {
       this.large = false;
     }
-    this.openWindow();
+    // this.openWindow();
   }
 
-
   openWindow() {
-    this.windowService.open(
-      InsertOrderComponent,
-      {title: 'Voeg order in'}
-    );
+    this.windowService.open(InsertOrderComponent, { title: 'Voeg order in' });
   }
 
   @HostListener('window:resize', ['$event'])

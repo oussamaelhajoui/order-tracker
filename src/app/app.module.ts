@@ -10,21 +10,23 @@ import {
   NbCardModule,
   NbButtonModule,
   NbListModule,
-  NbIconModule, NbInputModule, NbWindowModule
+  NbIconModule, NbInputModule, NbWindowModule,
+  NbDatepickerModule
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CardListComponent } from './components/card-list/card-list.component';
 import { InsertOrderComponent } from './components/insert-order/insert-order.component';
+import { DetailsComponent } from './pages/details/details.component';
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, CardListComponent, InsertOrderComponent],
+  declarations: [AppComponent, DashboardComponent, CardListComponent, InsertOrderComponent, DetailsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
 
-    NbThemeModule.forRoot({name: 'dark'}),
+    NbThemeModule.forRoot({ name: 'dark' }),
     NbWindowModule.forRoot(),
 
     NbLayoutModule,
@@ -33,9 +35,10 @@ import { InsertOrderComponent } from './components/insert-order/insert-order.com
     NbButtonModule,
     NbListModule,
     NbIconModule,
-    NbInputModule
+    NbInputModule,
+    NbDatepickerModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
