@@ -1,44 +1,36 @@
 import { Injectable } from '@angular/core';
-import {map} from 'rxjs/operators';
-import {HttpClient} from '@angular/common/http';
-import {environment} from '../../environments/environment';
-import {OrderData} from '../models/OrderData';
-import {Observable} from 'rxjs';
+import { map } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
+import { OrderData, Stage } from '../models/OrderData';
+import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
-  orders: OrderData[] = [];
+  allOrders$: OrderData[];
+  toAcceptOrders$: OrderData[];
+  toProcessOrders$: OrderData[];
+  toShipOrders$: OrderData[];
+  shippedOrders$: OrderData[];
 
-  constructor(private http: HttpClient) {
-    this.load();
-  }
+  constructor(private http: HttpClient) { }
 
   loadOrderData(): Observable<OrderData[]> {
-    return this.http.get(`${environment.api}/orders`).pipe(
-      map(response => User.deserialize(response['data']))
-    );
+    return this.http.get<OrderData[]>(`${environment.api}`);
   }
 
-  load() {
-      this.loadOrderData().subscribe(
-        (orderData: OrderData[]) => {
-          this.orders = orderData;
-        },
-        (error) => {
-          console.log('Could not load the data', error);
-        }
-      );
+  loadStageOrderData(stage: string | number): Observable<OrderData[]> {
+    if (stage) {
+      if (typeof stage === "string") {
+        stage = Stage[stage as keyof typeof Stage];
+      }
+    }
+    return this.http.get<OrderData[]>(`${environment.api}/${stage}`)
   }
 
-
-
-  saveOrderData(): Observable<OrderData[]> {
-    return this.http.get(`${environment.api}/orders`).pipe(
-      map(response => User.deserialize(response['data']))
-    );
-  }
   saveOrder() {
   }
 }

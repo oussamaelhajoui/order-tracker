@@ -18,12 +18,15 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CardListComponent } from './components/card-list/card-list.component';
 import { InsertOrderComponent } from './components/insert-order/insert-order.component';
 import { DetailsComponent } from './pages/details/details.component';
+import { HttpClientModule } from '@angular/common/http';
+import { OrderService } from './services/order.service';
 
 @NgModule({
   declarations: [AppComponent, DashboardComponent, CardListComponent, InsertOrderComponent, DetailsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
 
     NbThemeModule.forRoot({ name: 'dark' }),
@@ -38,7 +41,7 @@ import { DetailsComponent } from './pages/details/details.component';
     NbInputModule,
     NbDatepickerModule.forRoot(),
   ],
-  providers: [],
+  providers: [OrderService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
