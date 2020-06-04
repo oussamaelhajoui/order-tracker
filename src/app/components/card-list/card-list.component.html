@@ -11,8 +11,10 @@
         <span *ngIf="large">{{ data.stad }}</span>
         <span>{{ data.orderDate | momentDate }}</span>
         <span *ngIf="large">{{ data.prijs }}</span>
-        <span *ngIf="showButton"><button nbButton status="primary" size="small" (click)="updateOrder(data)">overseinen
-            <nb-icon icon="arrow-ios-forward-outline"></nb-icon></button></span>
+        <span *ngIf="showButton">
+            <button nbButton status="primary" size="small" (click)="updateOrder(data)">overseinen
+              <nb-icon icon="arrow-ios-forward-outline"></nb-icon></button>
+          </span>
       </nb-list-item>
     </nb-list>
   </nb-card-body>

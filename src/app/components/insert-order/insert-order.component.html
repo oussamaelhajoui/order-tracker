@@ -1,15 +1,16 @@
 <h3>Voeg de order details hieronder in</h3>
 <div class="content-wrapper">
-  <form>
-    <input name="naam" type="text" nbInput id="klant" fullWidth status="basic" placeholder="Klant naam">
-    <input name="product" type="text" nbInput id="product" fullWidth status="basic" placeholder="Product">
-    <input name="aantal" type="text" nbInput id="aantal" fullWidth status="basic" placeholder="Aantal">
-    <input name="totaal" type="text" nbInput id="totaal" fullWidth status="basic" placeholder="Totaal prijs">
-    <input name="straat" type="text" nbInput id="straat" fullWidth status="basic" placeholder="Straat">
-    <input name="postcode" type="text" nbInput id="postcode" fullWidth status="basic" placeholder="Postcode">
-    <input name="stad" type="text" nbInput id="stad" fullWidth status="basic" placeholder="Stad">
-    <input name="land" type="text" nbInput id="land" fullWidth status="basic" placeholder="Land">
+  <form [formGroup]="insertOrder" (ngSubmit)="onSubmit()">
+    <input name="naam" type="text" nbInput id="klant" fullWidth status="basic" placeholder="Klant naam" formControlName="klantnaam">
+    <input name="product" type="text" nbInput id="product" fullWidth status="basic" placeholder="Product" formControlName="product">
+    <input name="aantal" type="text" nbInput id="aantal" fullWidth status="basic" placeholder="Aantal" formControlName="aantal">
+    <input name="totaal" type="text" nbInput id="totaal" fullWidth status="basic" placeholder="Totaal prijs" formControlName="prijs">
+    <input name="straat" type="text" nbInput id="straat" fullWidth status="basic" placeholder="Straat" formControlName="straat">
+    <input name="postcode" type="text" nbInput id="postcode" fullWidth status="basic" placeholder="Postcode" formControlName="postcode">
+    <input name="stad" type="text" nbInput id="stad" fullWidth status="basic" placeholder="Stad" formControlName="stad">
+    <input name="land" type="text" nbInput id="land" fullWidth status="basic" placeholder="Land" formControlName="land">
     <input name="submit" nbButton status="success" id="submit" type="submit" value="Sla order op">
+    <p *ngIf="insertOrder.invalid && submitted">Vul alle velden in</p>
   </form>
 
 </div>

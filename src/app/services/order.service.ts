@@ -31,7 +31,11 @@ export class OrderService {
     return this.http.get<OrderData[]>(`${environment.api}/${stage}`)
   }
 
-  saveOrder() {
+  saveOrder(order: OrderData) {
+    console.log('got a save event', order)
+
+    const postCall = this.http.post(`${environment.api}`, { ...order })
+    return postCall;
   }
 
   updateOrder(order: OrderData, stage: Stage) {
@@ -40,8 +44,6 @@ export class OrderService {
     order.stage = stage;
 
     const putCall = this.http.put(`${environment.api}/${order.id}`, { ...order })
-
-
     return putCall;
   }
 }

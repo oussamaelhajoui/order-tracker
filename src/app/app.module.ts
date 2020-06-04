@@ -11,7 +11,9 @@ import {
   NbButtonModule,
   NbListModule,
   NbIconModule, NbInputModule, NbWindowModule,
-  NbDatepickerModule
+  NbDatepickerModule,
+  NbTooltipModule,
+  NbToastrModule
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -21,14 +23,18 @@ import { DetailsComponent } from './pages/details/details.component';
 import { HttpClientModule } from '@angular/common/http';
 import { OrderService } from './services/order.service';
 import { MomentDatePipe } from './pipes/moment-date.pipe';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ToastComponent } from './components/toast/toast.component';
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, CardListComponent, InsertOrderComponent, DetailsComponent, MomentDatePipe],
+  declarations: [AppComponent, DashboardComponent, CardListComponent, InsertOrderComponent, DetailsComponent, MomentDatePipe, ToastComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
 
     NbThemeModule.forRoot({ name: 'dark' }),
     NbWindowModule.forRoot(),
@@ -41,6 +47,8 @@ import { MomentDatePipe } from './pipes/moment-date.pipe';
     NbIconModule,
     NbInputModule,
     NbDatepickerModule.forRoot(),
+    NbTooltipModule,
+    NbToastrModule.forRoot(),
   ],
   providers: [OrderService],
   bootstrap: [AppComponent],

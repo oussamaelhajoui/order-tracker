@@ -6,7 +6,7 @@ import {DetailsComponent} from './pages/details/details.component';
 const routes: Routes = [
   { path: '', children: [
       { path: '', component: DashboardComponent },
-      { path: 'details/:type', component: DetailsComponent },
+      { path: 'details/:stage', component: DetailsComponent },
     ] },
 ];
 

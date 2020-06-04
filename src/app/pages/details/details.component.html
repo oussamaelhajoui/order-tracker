@@ -1,1 +1,21 @@
-<h1>Details</h1>
+<button nbButton ghost routerLink="/" nbTooltip="Terug naar dashboard" nbTooltipIcon="home-outline" status="danger" size="large"><nb-icon icon="arrow-back"></nb-icon></button>
+<button class="refreshbutton" nbButton ghost nbTooltip="ververs detail pagina" nbTooltipIcon="refresh-outline" status="danger" size="large" (click)="loadData()"><nb-icon icon="refresh-outline"></nb-icon></button>
+
+<h1>Details - {{stage}}</h1>
+<div class="content-wrapper">
+    <app-card-list *ngIf="stage === 'toaccept'" id="accept-card" [accent]="'danger'" [cardTitle]="'Orders te accepteren'" [large]="true"
+      [listData]="orderService.toAcceptOrders$" [link]="'/details/accept'" [toStage]="1" (loadData)="loadData()">
+    </app-card-list>
+
+
+    <app-card-list *ngIf="stage === 'tomanage'" id="prepare-card" [accent]="'info'" [cardTitle]="'Orders te bereiden'" [large]="true"
+      [listData]="orderService.toProcessOrders$" [link]="'/details/tomanage'" [toStage]="2" (loadData)="loadData()">
+    </app-card-list>
+  
+    <app-card-list *ngIf="stage === 'tosend'" id="send-card" [accent]="'warning'" [cardTitle]="'Orders te verzenden'" [large]="true"
+      [listData]="orderService.toShipOrders$" [link]="'/details/tosend'" [toStage]="3" (loadData)="loadData()">
+    </app-card-list>
+  
+    <app-card-list *ngIf="stage === 'send'" id="sent-card" [accent]="'control'" [cardTitle]="'Orders verzonden'" [large]="true"
+      [listData]="orderService.shippedOrders$" [link]="'/details/send'" [showButton]="false"></app-card-list>
+</div>
