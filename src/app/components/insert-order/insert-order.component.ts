@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, HostBinding} from '@angular/core';
+import {Component, Input, OnInit, HostBinding, Output, EventEmitter} from '@angular/core';
 import { OrderService } from 'src/app/services/order.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { NbToastrService } from '@nebular/theme';
@@ -9,15 +9,20 @@ import { NbToastrService } from '@nebular/theme';
   styleUrls: ['./insert-order.component.scss']
 })
 export class InsertOrderComponent implements OnInit {
+  @Input() izan: string;  
+  @Input() index: number;
+  
   submitted = false;
   
   @HostBinding('class')
   classes = 'example-items-rows';
   
-  constructor(public orderService: OrderService, private toastrService: NbToastrService) { }
+  constructor(public orderService: OrderService, private toastrService: NbToastrService, ) {
+   }
 
 
   ngOnInit(): void {
+    console.log('prop', this.izan)
   }
 
   insertOrder = new FormGroup({

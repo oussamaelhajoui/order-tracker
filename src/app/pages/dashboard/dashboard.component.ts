@@ -25,6 +25,7 @@ export class DashboardComponent implements OnInit {
   public stages = Stage;
 
 
+
   constructor(private windowService: NbWindowService, public orderService: OrderService) { }
 
   ngOnInit(): void {
@@ -34,8 +35,9 @@ export class DashboardComponent implements OnInit {
   }
 
   openWindow() {
-    this.windowService.open(InsertOrderComponent, { title: 'Voeg order in' });
+    let winRef = this.windowService.open(InsertOrderComponent, { title: 'Voeg order in', context: {izan: 'hoi'}});
   }
+
 
   loadData() {
     this.orderService.loadStageOrderData(0).subscribe(data => {
