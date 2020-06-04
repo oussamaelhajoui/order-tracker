@@ -20,9 +20,10 @@ import { InsertOrderComponent } from './components/insert-order/insert-order.com
 import { DetailsComponent } from './pages/details/details.component';
 import { HttpClientModule } from '@angular/common/http';
 import { OrderService } from './services/order.service';
+import { MomentDatePipe } from './pipes/moment-date.pipe';
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, CardListComponent, InsertOrderComponent, DetailsComponent],
+  declarations: [AppComponent, DashboardComponent, CardListComponent, InsertOrderComponent, DetailsComponent, MomentDatePipe],
   imports: [
     BrowserModule,
     AppRoutingModule,

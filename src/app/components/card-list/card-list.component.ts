@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {OrderData} from '../../models/OrderData';
+import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
+import { OrderData, Stage } from '../../models/OrderData';
+import { OrderService } from "../../services/order.service";
 
 @Component({
   selector: 'app-card-list',
@@ -14,9 +15,19 @@ export class CardListComponent implements OnInit {
   @Input() large: boolean;
   @Input() accent: string;
   @Input() showButton = true;
-  constructor() { }
+  @Input() toStage: Stage;
+  @Output() loadData = new EventEmitter();
+  constructor(private orderService: OrderService) { }
 
   ngOnInit(): void {
+  }
+
+  updateOrder(order: OrderData) {
+    console.log('hoi')
+    this.orderService.updateOrder(order, this.toStage).subscribe(r => {
+      console.log('res', r);
+      this.loadData.emit();
+    })
   }
 
 }

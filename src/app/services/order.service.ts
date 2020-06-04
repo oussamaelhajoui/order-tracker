@@ -10,11 +10,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class OrderService {
-  allOrders$: OrderData[];
-  toAcceptOrders$: OrderData[];
-  toProcessOrders$: OrderData[];
-  toShipOrders$: OrderData[];
-  shippedOrders$: OrderData[];
+  allOrders$: OrderData[] = [];
+  toAcceptOrders$: OrderData[] = [];
+  toProcessOrders$: OrderData[] = [];
+  toShipOrders$: OrderData[] = [];
+  shippedOrders$: OrderData[] = [];
 
   constructor(private http: HttpClient) { }
 
@@ -32,5 +32,16 @@ export class OrderService {
   }
 
   saveOrder() {
+  }
+
+  updateOrder(order: OrderData, stage: Stage) {
+    console.log('got an update event', order, stage)
+
+    order.stage = stage;
+
+    const putCall = this.http.put(`${environment.api}/${order.id}`, { ...order })
+
+
+    return putCall;
   }
 }
